@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import OrderTable from '@/components/orders/OrderTable';
 import OrderModal from '@/components/orders/OrderModal';
-import { ShoppingCart, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { RootState } from '@/store';
 import { Order, fetchOrdersRequest, selectOrder } from '@/store/slices/ordersSlice';
 
 export default function OrdersPage() {
   const dispatch = useDispatch();
-  const { orders, selectedOrder } = useSelector((state: RootState) => state.orders);
+  const { selectedOrder } = useSelector((state: RootState) => state.orders);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {

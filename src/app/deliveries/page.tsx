@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import DeliveryTable from '@/components/deliveries/DeliveryTable';
 import DeliveryModal from '@/components/deliveries/DeliveryModal';
-import { Truck, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { RootState } from '@/store';
 import { Delivery, fetchDeliveriesRequest, selectDelivery } from '@/store/slices/deliveriesSlice';
 
 export default function DeliveriesPage() {
   const dispatch = useDispatch();
-  const { deliveries, selectedDelivery } = useSelector((state: RootState) => state.deliveries);
+  const { selectedDelivery } = useSelector((state: RootState) => state.deliveries);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {

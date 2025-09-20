@@ -50,8 +50,9 @@ function* handleFetchStats() {
   try {
     const stats = yield call(mockFetchStats);
     yield put(fetchStatsSuccess(stats));
-  } catch (error: any) {
-    yield put(fetchStatsFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(fetchStatsFailure(errorMessage));
   }
 }
 
@@ -59,8 +60,9 @@ function* handleFetchRevenueData() {
   try {
     const revenueData = yield call(mockFetchRevenueData);
     yield put(fetchRevenueDataSuccess(revenueData));
-  } catch (error: any) {
-    yield put(fetchRevenueDataFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(fetchRevenueDataFailure(errorMessage));
   }
 }
 
@@ -68,8 +70,9 @@ function* handleFetchOrderDistribution() {
   try {
     const orderDistribution = yield call(mockFetchOrderDistribution);
     yield put(fetchOrderDistributionSuccess(orderDistribution));
-  } catch (error: any) {
-    yield put(fetchOrderDistributionFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(fetchOrderDistributionFailure(errorMessage));
   }
 }
 

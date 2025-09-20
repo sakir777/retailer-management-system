@@ -111,7 +111,7 @@ const deliveriesSlice = createSlice({
     },
 
     // Add delivery
-    addDeliveryRequest: (state, action: PayloadAction<Omit<Delivery, 'id' | 'deliveryNumber' | 'createdAt' | 'updatedAt'>>) => {
+    addDeliveryRequest: (state, _action: PayloadAction<Omit<Delivery, 'id' | 'deliveryNumber' | 'createdAt' | 'updatedAt'>>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -126,7 +126,7 @@ const deliveriesSlice = createSlice({
     },
 
     // Update delivery
-    updateDeliveryRequest: (state, action: PayloadAction<Delivery>) => {
+    updateDeliveryRequest: (state, _action: PayloadAction<Delivery>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -144,7 +144,7 @@ const deliveriesSlice = createSlice({
     },
 
     // Delete delivery
-    deleteDeliveryRequest: (state, action: PayloadAction<string>) => {
+    deleteDeliveryRequest: (state, _action: PayloadAction<string>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -159,7 +159,7 @@ const deliveriesSlice = createSlice({
     },
 
     // Update delivery status
-    updateDeliveryStatusRequest: (state, action: PayloadAction<{ deliveryId: string; status: Delivery['status'] }>) => {
+    updateDeliveryStatusRequest: (state, _action: PayloadAction<{ deliveryId: string; status: Delivery['status'] }>) => {
       state.isLoading = true;
       state.error = null;
     },

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { Order, OrderItem, addOrderRequest, updateOrderRequest, selectOrder, clearError } from '@/store/slices/ordersSlice';
-import { Product } from '@/store/slices/productsSlice';
 import { X, Save, Loader2, Plus, Trash2 } from 'lucide-react';
 
 interface OrderModalProps {
@@ -389,7 +388,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
 
             {orderItems.length === 0 && (
               <div className="text-center py-8 text-gray-500">
-                No items added to this order. Click "Add Item" to get started.
+                No items added to this order. Click &quot;Add Item&quot; to get started.
               </div>
             )}
           </div>

@@ -84,7 +84,7 @@ const productsSlice = createSlice({
     },
 
     // Add product
-    addProductRequest: (state, action: PayloadAction<Omit<Product, 'id' | 'createdAt' | 'updatedAt'>>) => {
+    addProductRequest: (state, _action: PayloadAction<Omit<Product, 'id' | 'createdAt' | 'updatedAt'>>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -99,7 +99,7 @@ const productsSlice = createSlice({
     },
 
     // Update product
-    updateProductRequest: (state, action: PayloadAction<Product>) => {
+    updateProductRequest: (state, _action: PayloadAction<Product>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -117,7 +117,7 @@ const productsSlice = createSlice({
     },
 
     // Delete product
-    deleteProductRequest: (state, action: PayloadAction<string>) => {
+    deleteProductRequest: (state, _action: PayloadAction<string>) => {
       state.isLoading = true;
       state.error = null;
     },

@@ -48,8 +48,9 @@ function* handleLogin(action: ReturnType<typeof loginRequest>) {
     const { email, password } = action.payload;
     const user = yield call(mockLogin, email, password);
     yield put(loginSuccess(user));
-  } catch (error: any) {
-    yield put(loginFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(loginFailure(errorMessage));
   }
 }
 
@@ -58,8 +59,9 @@ function* handleSignup(action: ReturnType<typeof signupRequest>) {
     const { name, email, password } = action.payload;
     const user = yield call(mockSignup, name, email, password);
     yield put(signupSuccess(user));
-  } catch (error: any) {
-    yield put(signupFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(signupFailure(errorMessage));
   }
 }
 

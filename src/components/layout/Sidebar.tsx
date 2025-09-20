@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
@@ -12,10 +12,8 @@ import {
   ShoppingCart,
   Truck,
   Settings,
-  Menu,
   X,
   LogOut,
-  User,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -72,10 +70,12 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center space-x-3">
               <div className="flex-shrink-0">
-                <img
+                <Image
                   className="h-10 w-10 rounded-full object-cover"
                   src={user?.avatar || 'https://avatars.githubusercontent.com/u/106683015?v=4?w=40&h=40&fit=crop&crop=face'}
                   alt={user?.name || 'User'}
+                  width={40}
+                  height={40}
                 />
               </div>
               <div className="flex-1 min-w-0">

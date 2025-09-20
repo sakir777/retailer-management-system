@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { Order, selectOrder, deleteOrderRequest, updateOrderStatusRequest } from '@/store/slices/ordersSlice';
-import { Edit, Trash2, Eye, Search, Filter, MoreVertical } from 'lucide-react';
+import { Order, deleteOrderRequest, updateOrderStatusRequest } from '@/store/slices/ordersSlice';
+import { Edit, Trash2, Search, Filter } from 'lucide-react';
 
 interface OrderTableProps {
   onEdit: (order: Order) => void;

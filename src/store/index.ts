@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
 import authReducer from './slices/authSlice';
 import dashboardReducer from './slices/dashboardSlice';
 import productsReducer from './slices/productsSlice';
@@ -17,7 +18,7 @@ const createNoopStorage = () => {
     getItem(_key: string) {
       return Promise.resolve(null);
     },
-    setItem(_key: string, value: any) {
+    setItem(_key: string, value: string) {
       return Promise.resolve(value);
     },
     removeItem(_key: string) {
@@ -26,13 +27,13 @@ const createNoopStorage = () => {
   };
 };
 
-const storage = typeof window !== 'undefined' 
-  ? require('redux-persist/lib/storage').default 
+const persistStorage = typeof window !== 'undefined' 
+  ? storage 
   : createNoopStorage();
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: persistStorage,
   whitelist: ['auth'], // Only persist auth state
 };
 

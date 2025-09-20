@@ -109,8 +109,9 @@ function* handleFetchDeliveries() {
   try {
     const deliveries = yield call(mockFetchDeliveries);
     yield put(fetchDeliveriesSuccess(deliveries));
-  } catch (error: any) {
-    yield put(fetchDeliveriesFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(fetchDeliveriesFailure(errorMessage));
   }
 }
 
@@ -118,8 +119,9 @@ function* handleAddDelivery(action: ReturnType<typeof addDeliveryRequest>) {
   try {
     const newDelivery = yield call(mockAddDelivery, action.payload);
     yield put(addDeliverySuccess(newDelivery));
-  } catch (error: any) {
-    yield put(addDeliveryFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(addDeliveryFailure(errorMessage));
   }
 }
 
@@ -127,8 +129,9 @@ function* handleUpdateDelivery(action: ReturnType<typeof updateDeliveryRequest>)
   try {
     const updatedDelivery = yield call(mockUpdateDelivery, action.payload);
     yield put(updateDeliverySuccess(updatedDelivery));
-  } catch (error: any) {
-    yield put(updateDeliveryFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(updateDeliveryFailure(errorMessage));
   }
 }
 
@@ -136,8 +139,9 @@ function* handleDeleteDelivery(action: ReturnType<typeof deleteDeliveryRequest>)
   try {
     const deliveryId = yield call(mockDeleteDelivery, action.payload);
     yield put(deleteDeliverySuccess(deliveryId));
-  } catch (error: any) {
-    yield put(deleteDeliveryFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(deleteDeliveryFailure(errorMessage));
   }
 }
 
@@ -146,8 +150,9 @@ function* handleUpdateDeliveryStatus(action: ReturnType<typeof updateDeliverySta
     const { deliveryId, status } = action.payload;
     const result = yield call(mockUpdateDeliveryStatus, deliveryId, status);
     yield put(updateDeliveryStatusSuccess(result));
-  } catch (error: any) {
-    yield put(updateDeliveryStatusFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(updateDeliveryStatusFailure(errorMessage));
   }
 }
 

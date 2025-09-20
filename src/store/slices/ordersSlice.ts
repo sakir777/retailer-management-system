@@ -126,7 +126,7 @@ const ordersSlice = createSlice({
     },
 
     // Add order
-    addOrderRequest: (state, action: PayloadAction<Omit<Order, 'id' | 'orderNumber' | 'createdAt' | 'updatedAt'>>) => {
+    addOrderRequest: (state, _action: PayloadAction<Omit<Order, 'id' | 'orderNumber' | 'createdAt' | 'updatedAt'>>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -141,7 +141,7 @@ const ordersSlice = createSlice({
     },
 
     // Update order
-    updateOrderRequest: (state, action: PayloadAction<Order>) => {
+    updateOrderRequest: (state, _action: PayloadAction<Order>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -159,7 +159,7 @@ const ordersSlice = createSlice({
     },
 
     // Delete order
-    deleteOrderRequest: (state, action: PayloadAction<string>) => {
+    deleteOrderRequest: (state, _action: PayloadAction<string>) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -174,7 +174,7 @@ const ordersSlice = createSlice({
     },
 
     // Update order status
-    updateOrderStatusRequest: (state, action: PayloadAction<{ orderId: string; status: Order['status'] }>) => {
+    updateOrderStatusRequest: (state, _action: PayloadAction<{ orderId: string; status: Order['status'] }>) => {
       state.isLoading = true;
       state.error = null;
     },

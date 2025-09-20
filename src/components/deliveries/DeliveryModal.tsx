@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { Delivery, addDeliveryRequest, updateDeliveryRequest, selectDelivery, clearError } from '@/store/slices/deliveriesSlice';
-import { Order } from '@/store/slices/ordersSlice';
 import { X, Save, Loader2 } from 'lucide-react';
 
 interface DeliveryModalProps {

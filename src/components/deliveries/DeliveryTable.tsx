@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { Delivery, selectDelivery, deleteDeliveryRequest, updateDeliveryStatusRequest } from '@/store/slices/deliveriesSlice';
-import { Edit, Trash2, Search, Filter, Truck, MapPin, Clock } from 'lucide-react';
+import { Delivery, deleteDeliveryRequest, updateDeliveryStatusRequest } from '@/store/slices/deliveriesSlice';
+import { Edit, Trash2, Search, Filter, MapPin, Clock } from 'lucide-react';
 
 interface DeliveryTableProps {
   onEdit: (delivery: Delivery) => void;

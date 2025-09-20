@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import ProductTable from '@/components/products/ProductTable';
 import ProductModal from '@/components/products/ProductModal';
-import { Package, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { RootState } from '@/store';
 import { Product, fetchProductsRequest, selectProduct } from '@/store/slices/productsSlice';
 
 export default function InventoryPage() {
   const dispatch = useDispatch();
-  const { products, selectedProduct } = useSelector((state: RootState) => state.products);
+  const { selectedProduct } = useSelector((state: RootState) => state.products);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {

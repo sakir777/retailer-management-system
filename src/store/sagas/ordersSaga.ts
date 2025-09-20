@@ -121,8 +121,9 @@ function* handleFetchOrders() {
   try {
     const orders = yield call(mockFetchOrders);
     yield put(fetchOrdersSuccess(orders));
-  } catch (error: any) {
-    yield put(fetchOrdersFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(fetchOrdersFailure(errorMessage));
   }
 }
 
@@ -130,8 +131,9 @@ function* handleAddOrder(action: ReturnType<typeof addOrderRequest>) {
   try {
     const newOrder = yield call(mockAddOrder, action.payload);
     yield put(addOrderSuccess(newOrder));
-  } catch (error: any) {
-    yield put(addOrderFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(addOrderFailure(errorMessage));
   }
 }
 
@@ -139,8 +141,9 @@ function* handleUpdateOrder(action: ReturnType<typeof updateOrderRequest>) {
   try {
     const updatedOrder = yield call(mockUpdateOrder, action.payload);
     yield put(updateOrderSuccess(updatedOrder));
-  } catch (error: any) {
-    yield put(updateOrderFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(updateOrderFailure(errorMessage));
   }
 }
 
@@ -148,8 +151,9 @@ function* handleDeleteOrder(action: ReturnType<typeof deleteOrderRequest>) {
   try {
     const orderId = yield call(mockDeleteOrder, action.payload);
     yield put(deleteOrderSuccess(orderId));
-  } catch (error: any) {
-    yield put(deleteOrderFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(deleteOrderFailure(errorMessage));
   }
 }
 
@@ -158,8 +162,9 @@ function* handleUpdateOrderStatus(action: ReturnType<typeof updateOrderStatusReq
     const { orderId, status } = action.payload;
     const result = yield call(mockUpdateOrderStatus, orderId, status);
     yield put(updateOrderStatusSuccess(result));
-  } catch (error: any) {
-    yield put(updateOrderStatusFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(updateOrderStatusFailure(errorMessage));
   }
 }
 

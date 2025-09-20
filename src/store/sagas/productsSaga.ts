@@ -87,8 +87,9 @@ function* handleFetchProducts() {
   try {
     const products = yield call(mockFetchProducts);
     yield put(fetchProductsSuccess(products));
-  } catch (error: any) {
-    yield put(fetchProductsFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(fetchProductsFailure(errorMessage));
   }
 }
 
@@ -96,8 +97,9 @@ function* handleAddProduct(action: ReturnType<typeof addProductRequest>) {
   try {
     const newProduct = yield call(mockAddProduct, action.payload);
     yield put(addProductSuccess(newProduct));
-  } catch (error: any) {
-    yield put(addProductFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(addProductFailure(errorMessage));
   }
 }
 
@@ -105,8 +107,9 @@ function* handleUpdateProduct(action: ReturnType<typeof updateProductRequest>) {
   try {
     const updatedProduct = yield call(mockUpdateProduct, action.payload);
     yield put(updateProductSuccess(updatedProduct));
-  } catch (error: any) {
-    yield put(updateProductFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(updateProductFailure(errorMessage));
   }
 }
 
@@ -114,8 +117,9 @@ function* handleDeleteProduct(action: ReturnType<typeof deleteProductRequest>) {
   try {
     const productId = yield call(mockDeleteProduct, action.payload);
     yield put(deleteProductSuccess(productId));
-  } catch (error: any) {
-    yield put(deleteProductFailure(error.message));
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    yield put(deleteProductFailure(errorMessage));
   }
 }
 

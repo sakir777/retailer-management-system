@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Image from 'next/image';
 import { RootState } from '@/store';
-import { Product, selectProduct, deleteProductRequest } from '@/store/slices/productsSlice';
-import { Edit, Trash2, Eye, Search, Filter } from 'lucide-react';
+import { Product, deleteProductRequest } from '@/store/slices/productsSlice';
+import { Edit, Trash2, Search, Filter } from 'lucide-react';
 
 interface ProductTableProps {
   onEdit: (product: Product) => void;
@@ -174,10 +175,12 @@ export default function ProductTable({ onEdit }: ProductTableProps) {
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-12 w-12">
                           {product.image ? (
-                            <img
+                            <Image
                               className="h-12 w-12 rounded-lg object-cover"
                               src={product.image}
                               alt={product.name}
+                              width={48}
+                              height={48}
                             />
                           ) : (
                             <div className="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">

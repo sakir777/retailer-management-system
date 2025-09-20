@@ -27,7 +27,7 @@ export default function WelcomeCard() {
             Welcome back, {user?.name || 'User'}!
           </h2>
           <p className="text-blue-100 mb-4">
-            Here's what's happening with your retail business today.
+            Here&apos;s what&apos;s happening with your retail business today.
           </p>
           <div className="flex items-center space-x-4 text-sm text-blue-100">
             <div className="flex items-center space-x-1">

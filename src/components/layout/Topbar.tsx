@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
 import { RootState } from '@/store';
 import { Search, Bell, Menu, ChevronDown } from 'lucide-react';
 
@@ -52,10 +53,12 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
               onClick={() => setIsProfileOpen(!isProfileOpen)}
               className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50"
             >
-              <img
+              <Image
                 className="h-8 w-8 rounded-full object-cover"
                 src={user?.avatar || 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face'}
                 alt={user?.name || 'User'}
+                width={32}
+                height={32}
               />
               <div className="hidden md:block text-left">
                 <p className="text-sm font-medium text-gray-900">
