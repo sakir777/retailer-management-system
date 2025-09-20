@@ -89,7 +89,7 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -109,7 +109,7 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 placeholder="Enter your email"
               />
             </div>
@@ -128,7 +128,7 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 placeholder="Enter your password"
               />
               <button
@@ -155,7 +155,7 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   required
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   placeholder="Confirm your password"
                 />
                 <button
