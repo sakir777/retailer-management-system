@@ -175,7 +175,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
               id="orderId"
               value={formData.orderId}
               onChange={(e) => handleOrderChange(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               required
             >
               <option value="">Select an order</option>
@@ -200,7 +200,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                 id="customerName"
                 value={formData.customerName}
                 onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -214,7 +214,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                 id="customerPhone"
                 value={formData.customerPhone}
                 onChange={(e) => setFormData({ ...formData, customerPhone: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -236,7 +236,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                     ...formData,
                     deliveryAddress: { ...formData.deliveryAddress, street: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -252,7 +252,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                     ...formData,
                     deliveryAddress: { ...formData.deliveryAddress, city: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -268,7 +268,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                     ...formData,
                     deliveryAddress: { ...formData.deliveryAddress, state: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -284,7 +284,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                     ...formData,
                     deliveryAddress: { ...formData.deliveryAddress, zipCode: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -300,7 +300,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                     ...formData,
                     deliveryAddress: { ...formData.deliveryAddress, country: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -318,7 +318,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                 id="scheduledDate"
                 value={formData.scheduledDate}
                 onChange={(e) => setFormData({ ...formData, scheduledDate: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -332,7 +332,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                 id="scheduledTime"
                 value={formData.scheduledTime}
                 onChange={(e) => setFormData({ ...formData, scheduledTime: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -345,7 +345,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                 id="status"
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as Delivery['status'] })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               >
                 <option value="scheduled">Scheduled</option>
                 <option value="in_transit">In Transit</option>
@@ -369,7 +369,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                   id="driverName"
                   value={formData.driverName}
                   onChange={(e) => setFormData({ ...formData, driverName: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 />
               </div>
 
@@ -382,7 +382,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                   id="driverPhone"
                   value={formData.driverPhone}
                   onChange={(e) => setFormData({ ...formData, driverPhone: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 />
               </div>
 
@@ -395,7 +395,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                   id="vehicleNumber"
                   value={formData.vehicleNumber}
                   onChange={(e) => setFormData({ ...formData, vehicleNumber: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 />
               </div>
             </div>
@@ -409,7 +409,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
                 id="estimatedDeliveryTime"
                 value={formData.estimatedDeliveryTime}
                 onChange={(e) => setFormData({ ...formData, estimatedDeliveryTime: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 placeholder="e.g., 14:00-16:00"
               />
             </div>
@@ -425,7 +425,7 @@ export default function DeliveryModal({ isOpen, onClose, delivery }: DeliveryMod
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               placeholder="Special delivery instructions or notes..."
             />
           </div>

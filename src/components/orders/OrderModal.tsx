@@ -181,7 +181,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                 id="customerName"
                 value={formData.customerName}
                 onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -195,7 +195,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                 id="customerEmail"
                 value={formData.customerEmail}
                 onChange={(e) => setFormData({ ...formData, customerEmail: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -209,7 +209,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                 id="customerPhone"
                 value={formData.customerPhone}
                 onChange={(e) => setFormData({ ...formData, customerPhone: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 required
               />
             </div>
@@ -231,7 +231,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     ...formData,
                     shippingAddress: { ...formData.shippingAddress, street: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -247,7 +247,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     ...formData,
                     shippingAddress: { ...formData.shippingAddress, city: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -263,7 +263,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     ...formData,
                     shippingAddress: { ...formData.shippingAddress, state: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -279,7 +279,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     ...formData,
                     shippingAddress: { ...formData.shippingAddress, zipCode: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -295,7 +295,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     ...formData,
                     shippingAddress: { ...formData.shippingAddress, country: e.target.value }
                   })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                   required
                 />
               </div>
@@ -325,7 +325,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                   <select
                     value={item.productId}
                     onChange={(e) => updateOrderItem(index, 'productId', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                     required
                   >
                     <option value="">Select Product</option>
@@ -345,7 +345,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     min="1"
                     value={item.quantity}
                     onChange={(e) => updateOrderItem(index, 'quantity', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                     required
                   />
                 </div>
@@ -358,7 +358,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     step="0.01"
                     value={item.price}
                     onChange={(e) => updateOrderItem(index, 'price', parseFloat(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                     readOnly
                   />
                 </div>
@@ -370,7 +370,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                     type="number"
                     step="0.01"
                     value={(item.price * item.quantity).toFixed(2)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-black"
                     readOnly
                   />
                 </div>
@@ -404,7 +404,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                 id="status"
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as Order['status'] })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
               >
                 <option value="pending">Pending</option>
                 <option value="processing">Processing</option>
@@ -422,7 +422,7 @@ export default function OrderModal({ isOpen, onClose, order }: OrderModalProps) 
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                 placeholder="Additional notes for this order..."
               />
             </div>

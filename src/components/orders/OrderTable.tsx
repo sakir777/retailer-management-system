@@ -136,7 +136,7 @@ export default function OrderTable({ onEdit }: OrderTableProps) {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
             >
               <option value="">All Statuses</option>
               {statuses.map((status) => (
@@ -237,7 +237,7 @@ export default function OrderTable({ onEdit }: OrderTableProps) {
                         <select
                           value={order.status}
                           onChange={(e) => handleStatusChange(order.id, e.target.value as Order['status'])}
-                          className="text-xs border-0 bg-transparent focus:ring-0 p-0"
+                          className="text-xs border-0 bg-transparent focus:ring-0 p-0 text-black"
                         >
                           <option value="pending">Pending</option>
                           <option value="processing">Processing</option>
