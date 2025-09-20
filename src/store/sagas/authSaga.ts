@@ -18,7 +18,7 @@ interface StoredUser {
   avatar?: string;
 }
 
-let users: StoredUser[] = [
+const users: StoredUser[] = [
   // Default admin user
   {
     id: '1',

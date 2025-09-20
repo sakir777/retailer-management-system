@@ -8,6 +8,7 @@ import dashboardReducer from './slices/dashboardSlice';
 import productsReducer from './slices/productsSlice';
 import ordersReducer from './slices/ordersSlice';
 import deliveriesReducer from './slices/deliveriesSlice';
+import settingsReducer from './slices/settingsSlice';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -15,13 +16,13 @@ const sagaMiddleware = createSagaMiddleware();
 // Create storage that works with SSR
 const createNoopStorage = () => {
   return {
-    getItem(_key: string) {
+    getItem() {
       return Promise.resolve(null);
     },
-    setItem(_key: string, value: string) {
+    setItem(_: string, value: string) {
       return Promise.resolve(value);
     },
-    removeItem(_key: string) {
+    removeItem() {
       return Promise.resolve();
     },
   };
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   orders: ordersReducer,
   deliveries: deliveriesReducer,
+  settings: settingsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
