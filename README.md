@@ -26,10 +26,37 @@ A comprehensive retailer management system built with Next.js, React, TypeScript
 
 ### 📱 Pages
 - **Dashboard**: Main overview with stats and charts
-- **Inventory**: Product inventory management (placeholder)
-- **Orders**: Order management and tracking (placeholder)
-- **Deliveries**: Delivery tracking and management (placeholder)
+- **Inventory**: Complete product management with CRUD operations
+- **Orders**: Full order management with customer details and status tracking
+- **Deliveries**: Comprehensive delivery scheduling and tracking system
 - **Settings**: Account and application settings (placeholder)
+
+### 🛍️ Product Management
+- **Add Products**: Create new products with name, description, price, category, stock, and SKU
+- **Edit Products**: Update existing product information
+- **Delete Products**: Remove products from inventory
+- **Search & Filter**: Find products by name, SKU, or category
+- **Sort Products**: Sort by name, price, stock, or category
+- **Stock Management**: Visual stock level indicators (low stock warnings)
+- **Product Images**: Support for product images via URL
+
+### 📦 Order Management
+- **Create Orders**: Add new orders with customer information and multiple items
+- **Order Items**: Add multiple products to orders with quantities
+- **Customer Details**: Store customer name, email, phone, and shipping address
+- **Order Status**: Track orders through pending, processing, shipped, delivered, cancelled
+- **Order Search**: Find orders by order number, customer name, or email
+- **Status Updates**: Change order status with dropdown selection
+- **Order Totals**: Automatic calculation of order totals
+
+### 🚚 Delivery Management
+- **Schedule Deliveries**: Create delivery schedules linked to orders
+- **Driver Assignment**: Assign drivers and vehicles to deliveries
+- **Address Management**: Store and manage delivery addresses
+- **Time Scheduling**: Set specific delivery dates and times
+- **Status Tracking**: Monitor delivery progress (scheduled, in transit, delivered, failed)
+- **Delivery Notes**: Add special instructions for deliveries
+- **Order Integration**: Automatically populate customer details from orders
 
 ## Tech Stack
 
@@ -103,6 +130,9 @@ The application uses Redux Toolkit with Redux-Saga for state management:
 
 - **Auth Slice**: Handles user authentication state
 - **Dashboard Slice**: Manages dashboard data (stats, charts, order distribution)
+- **Products Slice**: Manages product inventory with full CRUD operations
+- **Orders Slice**: Handles order management and status tracking
+- **Deliveries Slice**: Manages delivery scheduling and tracking
 - **Sagas**: Handle side effects and mock API calls
 
 ## Mock Data
@@ -112,6 +142,9 @@ The application includes mock data for:
 - Dashboard statistics
 - Revenue trend data (6 months)
 - Order status distribution
+- Sample products (Electronics, Appliances)
+- Sample orders with customer information
+- Sample deliveries with driver assignments
 
 ## Responsive Design
 

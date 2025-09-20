@@ -4,6 +4,9 @@ import { persistStore, persistReducer } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
 import authReducer from './slices/authSlice';
 import dashboardReducer from './slices/dashboardSlice';
+import productsReducer from './slices/productsSlice';
+import ordersReducer from './slices/ordersSlice';
+import deliveriesReducer from './slices/deliveriesSlice';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -36,6 +39,9 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   dashboard: dashboardReducer,
+  products: productsReducer,
+  orders: ordersReducer,
+  deliveries: deliveriesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
