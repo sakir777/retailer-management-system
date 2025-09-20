@@ -9,18 +9,40 @@ import {
   User,
 } from '../slices/authSlice';
 
+// In-memory user storage (in a real app, this would be a database)
+interface StoredUser {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  avatar?: string;
+}
+
+let users: StoredUser[] = [
+  // Default admin user
+  {
+    id: '1',
+    name: 'Sakir Shaikh',
+    email: 'admin@example.com',
+    password: 'password',
+    avatar: 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face',
+  }
+];
+
 // Mock API functions
 const mockLogin = async (email: string, password: string) => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
-  // Mock validation
-  if (email === 'admin@example.com' && password === 'password') {
+  // Find user by email and password
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if (user) {
     return {
-      id: '1',
-      name: 'Sakir Shaikh',
-      email: email,
-      avatar: 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face',
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      avatar: user.avatar,
     };
   } else {
     throw new Error('Invalid credentials');
@@ -31,13 +53,30 @@ const mockSignup = async (name: string, email: string, password: string) => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
+  // Check if user already exists
+  const existingUser = users.find(u => u.email === email);
+  if (existingUser) {
+    throw new Error('User with this email already exists');
+  }
+  
   // Mock validation
   if (email && password && name) {
-    return {
+    const newUser: StoredUser = {
       id: Date.now().toString(),
       name: name,
       email: email,
+      password: password,
       avatar: 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face',
+    };
+    
+    // Store the new user
+    users.push(newUser);
+    
+    return {
+      id: newUser.id,
+      name: newUser.name,
+      email: newUser.email,
+      avatar: newUser.avatar,
     };
   } else {
     throw new Error('Invalid signup data');
