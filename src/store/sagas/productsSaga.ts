@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, CallEffect, PutEffect, ForkEffect } from 'redux-saga/effects';
 import {
   fetchProductsRequest,
   fetchProductsSuccess,
@@ -83,9 +83,9 @@ const mockDeleteProduct = async (productId: string): Promise<string> => {
 };
 
 // Saga handlers
-function* handleFetchProducts() {
+function* handleFetchProducts(): Generator<CallEffect<Product[]> | PutEffect, void, Product[]> {
   try {
-    const products = yield call(mockFetchProducts);
+    const products: Product[] = yield call(mockFetchProducts);
     yield put(fetchProductsSuccess(products));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -93,9 +93,9 @@ function* handleFetchProducts() {
   }
 }
 
-function* handleAddProduct(action: ReturnType<typeof addProductRequest>) {
+function* handleAddProduct(action: ReturnType<typeof addProductRequest>): Generator<CallEffect<Product> | PutEffect, void, Product> {
   try {
-    const newProduct = yield call(mockAddProduct, action.payload);
+    const newProduct: Product = yield call(mockAddProduct, action.payload);
     yield put(addProductSuccess(newProduct));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -103,9 +103,9 @@ function* handleAddProduct(action: ReturnType<typeof addProductRequest>) {
   }
 }
 
-function* handleUpdateProduct(action: ReturnType<typeof updateProductRequest>) {
+function* handleUpdateProduct(action: ReturnType<typeof updateProductRequest>): Generator<CallEffect<Product> | PutEffect, void, Product> {
   try {
-    const updatedProduct = yield call(mockUpdateProduct, action.payload);
+    const updatedProduct: Product = yield call(mockUpdateProduct, action.payload);
     yield put(updateProductSuccess(updatedProduct));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -113,9 +113,9 @@ function* handleUpdateProduct(action: ReturnType<typeof updateProductRequest>) {
   }
 }
 
-function* handleDeleteProduct(action: ReturnType<typeof deleteProductRequest>) {
+function* handleDeleteProduct(action: ReturnType<typeof deleteProductRequest>): Generator<CallEffect<string> | PutEffect, void, string> {
   try {
-    const productId = yield call(mockDeleteProduct, action.payload);
+    const productId: string = yield call(mockDeleteProduct, action.payload);
     yield put(deleteProductSuccess(productId));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -123,7 +123,7 @@ function* handleDeleteProduct(action: ReturnType<typeof deleteProductRequest>) {
   }
 }
 
-export default function* productsSaga() {
+export default function* productsSaga(): Generator<ForkEffect, void, unknown> {
   yield takeEvery(fetchProductsRequest.type, handleFetchProducts);
   yield takeEvery(addProductRequest.type, handleAddProduct);
   yield takeEvery(updateProductRequest.type, handleUpdateProduct);

@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, CallEffect, PutEffect, ForkEffect } from 'redux-saga/effects';
 import {
   fetchStatsRequest,
   fetchStatsSuccess,
@@ -9,6 +9,9 @@ import {
   fetchOrderDistributionRequest,
   fetchOrderDistributionSuccess,
   fetchOrderDistributionFailure,
+  Stats,
+  RevenueData,
+  OrderDistribution,
 } from '../slices/dashboardSlice';
 
 // Mock API functions
@@ -46,9 +49,9 @@ const mockFetchOrderDistribution = async () => {
   ];
 };
 
-function* handleFetchStats() {
+function* handleFetchStats(): Generator<CallEffect<Stats> | PutEffect, void, Stats> {
   try {
-    const stats = yield call(mockFetchStats);
+    const stats: Stats = yield call(mockFetchStats);
     yield put(fetchStatsSuccess(stats));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -56,9 +59,9 @@ function* handleFetchStats() {
   }
 }
 
-function* handleFetchRevenueData() {
+function* handleFetchRevenueData(): Generator<CallEffect<RevenueData[]> | PutEffect, void, RevenueData[]> {
   try {
-    const revenueData = yield call(mockFetchRevenueData);
+    const revenueData: RevenueData[] = yield call(mockFetchRevenueData);
     yield put(fetchRevenueDataSuccess(revenueData));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -66,9 +69,9 @@ function* handleFetchRevenueData() {
   }
 }
 
-function* handleFetchOrderDistribution() {
+function* handleFetchOrderDistribution(): Generator<CallEffect<OrderDistribution[]> | PutEffect, void, OrderDistribution[]> {
   try {
-    const orderDistribution = yield call(mockFetchOrderDistribution);
+    const orderDistribution: OrderDistribution[] = yield call(mockFetchOrderDistribution);
     yield put(fetchOrderDistributionSuccess(orderDistribution));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -76,7 +79,7 @@ function* handleFetchOrderDistribution() {
   }
 }
 
-export default function* dashboardSaga() {
+export default function* dashboardSaga(): Generator<ForkEffect, void, unknown> {
   yield takeEvery(fetchStatsRequest.type, handleFetchStats);
   yield takeEvery(fetchRevenueDataRequest.type, handleFetchRevenueData);
   yield takeEvery(fetchOrderDistributionRequest.type, handleFetchOrderDistribution);

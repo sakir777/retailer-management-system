@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, CallEffect, PutEffect, ForkEffect } from 'redux-saga/effects';
 import {
   fetchOrdersRequest,
   fetchOrdersSuccess,
@@ -117,9 +117,9 @@ const mockUpdateOrderStatus = async (orderId: string, status: Order['status']): 
 };
 
 // Saga handlers
-function* handleFetchOrders() {
+function* handleFetchOrders(): Generator<CallEffect<Order[]> | PutEffect, void, Order[]> {
   try {
-    const orders = yield call(mockFetchOrders);
+    const orders: Order[] = yield call(mockFetchOrders);
     yield put(fetchOrdersSuccess(orders));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -127,9 +127,9 @@ function* handleFetchOrders() {
   }
 }
 
-function* handleAddOrder(action: ReturnType<typeof addOrderRequest>) {
+function* handleAddOrder(action: ReturnType<typeof addOrderRequest>): Generator<CallEffect<Order> | PutEffect, void, Order> {
   try {
-    const newOrder = yield call(mockAddOrder, action.payload);
+    const newOrder: Order = yield call(mockAddOrder, action.payload);
     yield put(addOrderSuccess(newOrder));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -137,9 +137,9 @@ function* handleAddOrder(action: ReturnType<typeof addOrderRequest>) {
   }
 }
 
-function* handleUpdateOrder(action: ReturnType<typeof updateOrderRequest>) {
+function* handleUpdateOrder(action: ReturnType<typeof updateOrderRequest>): Generator<CallEffect<Order> | PutEffect, void, Order> {
   try {
-    const updatedOrder = yield call(mockUpdateOrder, action.payload);
+    const updatedOrder: Order = yield call(mockUpdateOrder, action.payload);
     yield put(updateOrderSuccess(updatedOrder));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -147,9 +147,9 @@ function* handleUpdateOrder(action: ReturnType<typeof updateOrderRequest>) {
   }
 }
 
-function* handleDeleteOrder(action: ReturnType<typeof deleteOrderRequest>) {
+function* handleDeleteOrder(action: ReturnType<typeof deleteOrderRequest>): Generator<CallEffect<string> | PutEffect, void, string> {
   try {
-    const orderId = yield call(mockDeleteOrder, action.payload);
+    const orderId: string = yield call(mockDeleteOrder, action.payload);
     yield put(deleteOrderSuccess(orderId));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -157,10 +157,10 @@ function* handleDeleteOrder(action: ReturnType<typeof deleteOrderRequest>) {
   }
 }
 
-function* handleUpdateOrderStatus(action: ReturnType<typeof updateOrderStatusRequest>) {
+function* handleUpdateOrderStatus(action: ReturnType<typeof updateOrderStatusRequest>): Generator<CallEffect<{ orderId: string; status: Order['status'] }> | PutEffect, void, { orderId: string; status: Order['status'] }> {
   try {
     const { orderId, status } = action.payload;
-    const result = yield call(mockUpdateOrderStatus, orderId, status);
+    const result: { orderId: string; status: Order['status'] } = yield call(mockUpdateOrderStatus, orderId, status);
     yield put(updateOrderStatusSuccess(result));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -168,7 +168,7 @@ function* handleUpdateOrderStatus(action: ReturnType<typeof updateOrderStatusReq
   }
 }
 
-export default function* ordersSaga() {
+export default function* ordersSaga(): Generator<ForkEffect, void, unknown> {
   yield takeEvery(fetchOrdersRequest.type, handleFetchOrders);
   yield takeEvery(addOrderRequest.type, handleAddOrder);
   yield takeEvery(updateOrderRequest.type, handleUpdateOrder);

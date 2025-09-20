@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, CallEffect, PutEffect, ForkEffect } from 'redux-saga/effects';
 import {
   fetchDeliveriesRequest,
   fetchDeliveriesSuccess,
@@ -105,9 +105,9 @@ const mockUpdateDeliveryStatus = async (deliveryId: string, status: Delivery['st
 };
 
 // Saga handlers
-function* handleFetchDeliveries() {
+function* handleFetchDeliveries(): Generator<CallEffect<Delivery[]> | PutEffect, void, Delivery[]> {
   try {
-    const deliveries = yield call(mockFetchDeliveries);
+    const deliveries: Delivery[] = yield call(mockFetchDeliveries);
     yield put(fetchDeliveriesSuccess(deliveries));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -115,9 +115,9 @@ function* handleFetchDeliveries() {
   }
 }
 
-function* handleAddDelivery(action: ReturnType<typeof addDeliveryRequest>) {
+function* handleAddDelivery(action: ReturnType<typeof addDeliveryRequest>): Generator<CallEffect<Delivery> | PutEffect, void, Delivery> {
   try {
-    const newDelivery = yield call(mockAddDelivery, action.payload);
+    const newDelivery: Delivery = yield call(mockAddDelivery, action.payload);
     yield put(addDeliverySuccess(newDelivery));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -125,9 +125,9 @@ function* handleAddDelivery(action: ReturnType<typeof addDeliveryRequest>) {
   }
 }
 
-function* handleUpdateDelivery(action: ReturnType<typeof updateDeliveryRequest>) {
+function* handleUpdateDelivery(action: ReturnType<typeof updateDeliveryRequest>): Generator<CallEffect<Delivery> | PutEffect, void, Delivery> {
   try {
-    const updatedDelivery = yield call(mockUpdateDelivery, action.payload);
+    const updatedDelivery: Delivery = yield call(mockUpdateDelivery, action.payload);
     yield put(updateDeliverySuccess(updatedDelivery));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -135,9 +135,9 @@ function* handleUpdateDelivery(action: ReturnType<typeof updateDeliveryRequest>)
   }
 }
 
-function* handleDeleteDelivery(action: ReturnType<typeof deleteDeliveryRequest>) {
+function* handleDeleteDelivery(action: ReturnType<typeof deleteDeliveryRequest>): Generator<CallEffect<string> | PutEffect, void, string> {
   try {
-    const deliveryId = yield call(mockDeleteDelivery, action.payload);
+    const deliveryId: string = yield call(mockDeleteDelivery, action.payload);
     yield put(deleteDeliverySuccess(deliveryId));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -145,10 +145,10 @@ function* handleDeleteDelivery(action: ReturnType<typeof deleteDeliveryRequest>)
   }
 }
 
-function* handleUpdateDeliveryStatus(action: ReturnType<typeof updateDeliveryStatusRequest>) {
+function* handleUpdateDeliveryStatus(action: ReturnType<typeof updateDeliveryStatusRequest>): Generator<CallEffect<{ deliveryId: string; status: Delivery['status'] }> | PutEffect, void, { deliveryId: string; status: Delivery['status'] }> {
   try {
     const { deliveryId, status } = action.payload;
-    const result = yield call(mockUpdateDeliveryStatus, deliveryId, status);
+    const result: { deliveryId: string; status: Delivery['status'] } = yield call(mockUpdateDeliveryStatus, deliveryId, status);
     yield put(updateDeliveryStatusSuccess(result));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -156,7 +156,7 @@ function* handleUpdateDeliveryStatus(action: ReturnType<typeof updateDeliverySta
   }
 }
 
-export default function* deliveriesSaga() {
+export default function* deliveriesSaga(): Generator<ForkEffect, void, unknown> {
   yield takeEvery(fetchDeliveriesRequest.type, handleFetchDeliveries);
   yield takeEvery(addDeliveryRequest.type, handleAddDelivery);
   yield takeEvery(updateDeliveryRequest.type, handleUpdateDelivery);

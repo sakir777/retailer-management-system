@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, CallEffect, PutEffect, ForkEffect } from 'redux-saga/effects';
 import {
   loginRequest,
   loginSuccess,
@@ -6,6 +6,7 @@ import {
   signupRequest,
   signupSuccess,
   signupFailure,
+  User,
 } from '../slices/authSlice';
 
 // Mock API functions
@@ -43,10 +44,10 @@ const mockSignup = async (name: string, email: string, password: string) => {
   }
 };
 
-function* handleLogin(action: ReturnType<typeof loginRequest>) {
+function* handleLogin(action: ReturnType<typeof loginRequest>): Generator<CallEffect<User> | PutEffect, void, User> {
   try {
     const { email, password } = action.payload;
-    const user = yield call(mockLogin, email, password);
+    const user: User = yield call(mockLogin, email, password);
     yield put(loginSuccess(user));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -54,10 +55,10 @@ function* handleLogin(action: ReturnType<typeof loginRequest>) {
   }
 }
 
-function* handleSignup(action: ReturnType<typeof signupRequest>) {
+function* handleSignup(action: ReturnType<typeof signupRequest>): Generator<CallEffect<User> | PutEffect, void, User> {
   try {
     const { name, email, password } = action.payload;
-    const user = yield call(mockSignup, name, email, password);
+    const user: User = yield call(mockSignup, name, email, password);
     yield put(signupSuccess(user));
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
@@ -65,7 +66,7 @@ function* handleSignup(action: ReturnType<typeof signupRequest>) {
   }
 }
 
-export default function* authSaga() {
+export default function* authSaga(): Generator<ForkEffect, void, unknown> {
   yield takeEvery(loginRequest.type, handleLogin);
   yield takeEvery(signupRequest.type, handleSignup);
 }
