@@ -43,7 +43,7 @@ export default function WelcomeCard() {
         <div className="hidden md:block">
           <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
             <div className="w-16 h-16 bg-white bg-opacity-30 rounded-full flex items-center justify-center">
-              <span className="text-2xl font-bold text-white">
+              <span className="text-2xl font-bold text-black">
                 {user?.name?.charAt(0) || 'U'}
               </span>
             </div>

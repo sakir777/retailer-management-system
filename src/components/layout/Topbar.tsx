@@ -54,7 +54,7 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
             >
               <img
                 className="h-8 w-8 rounded-full object-cover"
-                src={user?.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'}
+                src={user?.avatar || 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face'}
                 alt={user?.name || 'User'}
               />
               <div className="hidden md:block text-left">

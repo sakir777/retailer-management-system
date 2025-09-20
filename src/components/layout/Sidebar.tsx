@@ -74,7 +74,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
               <div className="flex-shrink-0">
                 <img
                   className="h-10 w-10 rounded-full object-cover"
-                  src={user?.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'}
+                  src={user?.avatar || 'https://avatars.githubusercontent.com/u/106683015?v=4?w=40&h=40&fit=crop&crop=face'}
                   alt={user?.name || 'User'}
                 />
               </div>

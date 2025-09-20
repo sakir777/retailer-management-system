@@ -17,9 +17,9 @@ const mockLogin = async (email: string, password: string) => {
   if (email === 'admin@example.com' && password === 'password') {
     return {
       id: '1',
-      name: 'John Doe',
+      name: 'Sakir Shaikh',
       email: email,
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face',
+      avatar: 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face',
     };
   } else {
     throw new Error('Invalid credentials');
@@ -36,7 +36,7 @@ const mockSignup = async (name: string, email: string, password: string) => {
       id: Date.now().toString(),
       name: name,
       email: email,
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face',
+      avatar: 'https://avatars.githubusercontent.com/u/106683015?v=4?w=32&h=32&fit=crop&crop=face',
     };
   } else {
     throw new Error('Invalid signup data');
